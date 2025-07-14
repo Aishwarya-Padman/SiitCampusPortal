@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shriram Institute of Information Technology</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <style>
+
+        .navbar {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                list-style: none;
+                padding: 10px;
+                background: red;
+            }
+        
+            .navbar a {
+                text-decoration: none;
+                color: white;
+                padding: 10px 15px;
+            }
+        
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+        
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                background-color: white;
+                min-width: 160px;
+                box-shadow: 0px 4px 8px rgba(214, 5, 5, 0.2);
+                z-index: 1;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+        
+            .dropdown-menu li {
+                list-style: none;
+            }
+        
+            .dropdown-menu a {
+                color: rgb(209, 14, 14);
+                padding: 10px;
+                display: block;
+                text-decoration: none;
+            }
+        
+            .dropdown-menu a:hover {
+                background-color: #ddd;
+            }
+        
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+            
+        
+        
+            </style>
+          
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <span>📞 7875872000</span>
+            <span>📧 siitpaniv@gmail.com</span>
+        </div>
+        <div class="institute-header">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Institute Logo" class="logo">
+            <div class="institute-info">
+                <h1>Shriram Institute of Information Technology, Paniv</h1>
+                <p>Affiliated to Punyashlok Ahilyadevi Holkar Solapur University</p>
+                <p>NAAC Accredited with 'B' Grade</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('dashboard') }}">Home</a></li>
+            <li class="dropdown">
+                <a href="#"> Admission &#x25BE;</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('admissioncommittee') }}">Admission Committe</a></li>
+                    <li><a href="{{ url_for('admissionform') }}">General Admission Form</a></li>
+                    <li><a href="{{ url_for('finalform') }}">Final Admission Form</a> </li>
+                </ul>
+            </li>       
+            <li><a href="{{ url_for('meritlist') }}">BCS Merit List</a></li>
+            <li class="dropdown">
+                <a href="#">Extra Activity &#x25BE;</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('gallery1') }}">Photo Gallery</a></li>
+                    <li><a href="{{ url_for('hostel') }}">Hostel</a></li>
+                    <li><a href="{{ url_for('bus') }}">Buses</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url_for('Placement') }}">Placement</a></li>
+            <li><a href="{{ url_for('contact') }}">ContactUs</a></li>
+        </ul>
+        
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="{{ url_for('static', filename='images/b1.jpg') }}" alt="BCA Banner">
+        <h1>B.Sc(Ecs)</h1>
+    </div>
+
+    <!-- Content Section -->
+    <section class="content">
+        <h2>B.Sc(Ecs)</h2><br><br>
+        <p>This is a three-year bachelor degree course in computer science aimed at developing 
+            computer professionals versatile in the use of computers, mostly in the business world.
+             The emphasis is to develop professionals as programmers, system analysts, database 
+             administrators, documentation officers, etc.</p><br>
+
+             <p><strong>Eligibility for Admission of B.Sc(Ecs):</strong></p><br>
+             <p>A candidate must have passed H.S.C (10+2) in only science stream awarded by 
+                 University/State Board in any technical or Vocational Stream.
+             </p><br>
+
+     
+        <p><strong>B.Sc(Ecs) Course Details:</strong></p><br>
+        <a href="https://siitpaniv.org/wp-content/uploads/2023/05/BCA-I.pdf" 
+        target="_blank" rel="noopener"><h2>BCS I &#8211; View</h2></a>       
+        <a href="https://siitpaniv.org/wp-content/uploads/2023/05/BCA-II.pdf" 
+        target="_blank" rel="noopener"><h2>BCS II &#8211; View</h2></a>       
+        <a href="https://siitpaniv.org/wp-content/uploads/2023/05/MSD-BOS-BCA-2018.pdf"
+         target="_blank" rel="noopener"><h2>BCS III &#8211; View</h2></a>
+         
+         <div class="result-link">
+            <p><strong><a href="https://www.sus.ac.in/examination/Online-Result-(Ledger)">Check BCS Result</a></strong></p>
+        </div>
+            </section>    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <h3>SIIT Paniv</h3>
+            <p>SIIT Paniv is committed to shaping well-rounded individuals who can thrive in an ever-changing world. Join us in the journey of discovery, growth, and success.</p>
+        </div>
+        <div>
+            <h3>About Us</h3>
+            <p>About us History</p>
+            <p>SWOC</p>
+            <p>Vision And Mission</p>
+            <p>Management</p>
+            <p>Principal Desk</p>
+            <p>Vice Principal Desk</p>
+            <p>Staff Detail</p>
+        </div>
+        <div>
+            <h3>Courses</h3>
+            <p>BCA</p>
+            <p>BSc</p>
+            <p>M.Sc. (Comp. Sci.)</p>
+            <p>Certification Courses</p>
+            <p>Academic Calendar</p>
+        </div>
+        <div class="contact">
+            <h3>Connect Us</h3>
+            <p>Shriram Institute of Information Technology, Paniv, Malshiras, Solapur 413113</p>
+            <p><strong>Mobile No.:</strong> 7875872000</p>
+            <p><strong>Email ID:</strong> siitpaniv@gmail.com</p>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        &copy; Copyright 2024 – Shriram Institute of Information Technology, Paniv. All Rights Reserved.
+    </div>
+</body>
+</html>

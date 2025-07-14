@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HODs Desk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 60%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .person-section {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .person {
+            text-align: center;
+        }
+        .person img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .person h3 {
+            margin-top: 10px;
+            color: orange;
+            font-size: 22px;
+        }
+        .designation {
+            font-weight: bold;
+            font-size: 20px;
+            color: #002147;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>HOD's Desk</h2>
+        <div class="person-section">
+            <div class="person">
+                <div class="designation">BCA HOD</div>
+                <img src="{{ url_for('static', filename='images/nanwaresir.jpeg') }}" alt="BCA HOD Image">
+                <h3>Mr. Nanaware Y.K. Sir</h3>
+            </div>
+            <div class="person">
+                <div class="designation">BCS HOD</div>
+                <img src="{{ url_for('static', filename='images/nalesir.jpeg') }}" alt="BCS HOD Image">
+                <h3>Mr. Nale V.D. Sir</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

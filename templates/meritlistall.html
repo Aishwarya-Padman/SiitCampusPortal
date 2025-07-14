@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Merit List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #343a40;
+            border-bottom: 2px solid #007bff;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        p {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>BCA Merit List</h2>
+    {% if merit_bca %}
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Student Name</th>
+                <th>CET Marks</th>
+            </tr>
+            {% for student in merit_bca %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ student['student_name'] }}</td>
+                <td>{{ student['marks'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No merit list available for BCA.</p>
+    {% endif %}
+
+    <h2>BCS Merit List</h2>
+    {% if merit_bcs %}
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Student Name</th>
+                <th>12th Marks</th>
+            </tr>
+            {% for student in merit_bcs %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ student['student_name'] }}</td>
+                <td>{{ student['marks'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No merit list available for BCS.</p>
+    {% endif %}
+
+    <h2>MCS Merit List</h2>
+    {% if merit_mcs %}
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Student Name</th>
+                <th>Graduation Marks</th>
+            </tr>
+            {% for student in merit_mcs %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ student['student_name'] }}</td>
+                <td>{{ student['marks'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No merit list available for MCS.</p>
+    {% endif %}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    function checkDeleteStatus() {
+        if (localStorage.getItem("meritListDeleted") === "true") {
+            console.log("Tables deleted! Removing from UI...");
+            $("table").remove();  // Sare tables hatao
+            $("h2").remove();     // Headings hatao
+            $("p").text("No merit list available.");  // Message dikhao
+        }
+    }
+
+    checkDeleteStatus();  // Page load par check karo
+});
+</script>
+
+</body>
+</html>

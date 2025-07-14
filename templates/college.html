@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About College</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .about-section img {
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: #333;
+        }
+
+        .about-text p {
+            color: #555;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .extra-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="about-section">
+        <img src="{{ url_for('static', filename='images/siit.jpg') }}" alt="College Building">
+        <div class="about-text">
+            <h2>Shriram Institute Of Information Technology,Paniv</h2>
+            <p>Shriram Shikshan Sanstha has been an outstanding charitable institution & is very popular. 
+               The increasing demands of society & self-employment opportunities, besides many other factors, 
+               were responsible for the founder of Shriram Shikshan Sanstha to start a humble beginning in the area 
+               of education in Engineering & Technology. The efforts were recognized last year in 2008-09 by granting 
+               permission to Shriram Shikshan Sanstha to conduct different three-year Degree Courses.</p>
+
+            <p>Shriram Shikshan Sanstha has many courses like D.Ed, B.Ed, Shriram Madhyamik Vidyalaya, 
+               English Medium School, D.Pharmacy, I.T.C., diploma engineering college (Polytechnic), 
+               Degree Engineering College, Agricultural degree course.</p>
+        </div>
+    </div>
+
+    <div class="extra-text">
+        <p>In year 2008-09, Sanstha management decided to start courses BSc(E.C.S.) and BCA. 
+           The college is located in a rural area, and there were no institutions providing these courses. 
+           The management body realized the importance of IT education. There is a huge scope for IT developers 
+           and IT technicians in IT industries. But no college provides these courses. 
+           For rural area students, this is a big opportunity to learn this type of course. 
+           Students from rural areas are not so familiar with computers and IT fields.So after starting these course we are very glad to inform there is large response of students for these courses.
+
+           After very good achievements and best outcomes of these courses Shriram Shikshan Sanstha decided to start post graduation course, MSc(Computer Science) in our institution. MSc(Computer Science) course is started from academic year 2009-10 in our institution. And surprisingly there is good response for this course also.
+           
+           Our vision to attain global standing in technical and technological course and contribute the enhancement and empowerment of society and country. Our main objective is to focus on rural youth, their training and their career development in information technology field.</p>
+    </div>
+</div>
+
+</body>
+</html>

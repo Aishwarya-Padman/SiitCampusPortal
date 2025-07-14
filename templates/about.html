@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal’s Desk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 60%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .image-section {
+            flex: 1;
+            text-align: center;
+        }
+        .image-section img {
+            width: 250px;
+            height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .image-section h3 {
+            margin-top: 10px;
+            color: orange;
+            font-size: 22px;
+        }
+        .info-section {
+            flex: 2;
+            padding: 20px;
+        }
+        .info-section h2 {
+            color: #002147;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .info-section p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="{{ url_for('static', filename='images/principalsir.jpeg') }}" alt="Principal Image">
+            <h3>Mr. Rajendra R. Dawkare </h3>
+        </div>
+        <div class="info-section">
+            <h2>Principal’s Desk</h2>
+            <p>{{ principal_title }}</p>
+            <p>It gives me a great pleasure to welcome you to Shriram Institute Of Information Technology Paniv. The college was established in by great visionary leader Shri Prakash Patil in 2007 and governed by Shriram Shikshan Sanstha Paniv. The college provides higher education for overall development of students from rural area.It is one of the reputed college in solapur district of Maharashtra, Imparting education in Information Technology. Post graduate course in computer science is also introduced by the college.
+
+                The student strength of the college is high as students choose our college for many reasons: Highly committed and experienced faculty, infrastructural facilities available in the college, learning environment and great tradition of quality of education etc. So as to achieve excellence in quality education in days to come, the college is applying for its accreditation and assessment by NAAC, Bangalore.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

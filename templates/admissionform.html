@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+
+    <style>
+        /* Keyframes for right-to-left continuous animation */
+        @keyframes movingBanner {
+    0% { transform: translateX(100vw); }   /* पूरी तरह दाईं ओर */
+    50% { transform: translateX(-100vw); } /* पूरी तरह बाईं ओर */
+    100% { transform: translateX(100vw); } /* वापस दाईं ओर */
+}
+
+.moving-heading {
+    display: inline-block;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    background: red;
+    padding: 10px 25px;
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    white-space: nowrap;
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7);
+    
+    /* ✅ Slow & Continuous Animation */
+    animation: movingBanner 15s linear infinite;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Animated Heading -->
+    <h2 class="moving-heading">🔥 BCA/BCS/MCS Admission Open! 🎉</h2>
+
+    <div class="form-container">
+        <!-- Admission Form -->
+        <form action="/admissionform" method="POST">
+            <label for="student_name">Full Name:</label>
+            <input type="text" id="student_name" name="student_name" placeholder="First_Name        Middle_Name        Last_Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" placeholder="Enter your full address" required></textarea>
+
+            <label for="course">Course:</label>
+            <select id="course" name="course" required onchange="toggleFields()">
+                <option value="" disabled selected>Select your course</option>
+                <option value="BCA">BCA</option>
+                <option value="BCS">BCS</option>
+                <option value="MCS">MCS</option>
+            </select>
+            
+            <!-- CET Marks Field (Initially Hidden) -->
+            <div id="cet_marks_field" style="display: none;">
+                <label for="cet_marks">CET Marks:</label>
+                <input type="number" id="cet_marks" name="cet_marks" placeholder="Enter your CET marks">
+            </div>
+
+            <!-- 12th Marks Field (Initially Visible) -->
+            <div id="marks_12th_field">
+                <label for="marks_12th">12th Marks:</label>
+                <input type="number" id="marks_12th" name="marks_12th" placeholder="Enter your 12th grade marks">
+            </div>
+
+            <!-- Graduation Marks Field (Initially Hidden) -->
+            <div id="graduation_marks_field" style="display: none;">
+                <label for="graduation_marks">Graduation Marks:</label>
+                <input type="number" id="graduation_marks" name="graduation_marks" placeholder="Enter your Graduation marks">
+            </div>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" placeholder="Enter your category (e.g., General, OBC, SC/ST)" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleFields() {
+            var course = document.getElementById("course").value;
+            var cetMarksField = document.getElementById("cet_marks_field");
+            var graduationMarksField = document.getElementById("graduation_marks_field");
+            var marks12thField = document.getElementById("marks_12th_field");
+    
+            if (course === "BCA") {
+                cetMarksField.style.display = "block";
+                marks12thField.style.display = "block";
+                graduationMarksField.style.display = "none";
+            } 
+            else if (course === "BCS") {
+                cetMarksField.style.display = "none";
+                marks12thField.style.display = "block";
+                graduationMarksField.style.display = "none";
+            } 
+            else if (course === "MCS") {
+                cetMarksField.style.display = "none";
+                marks12thField.style.display = "none";
+                graduationMarksField.style.display = "block";
+            } 
+            else {
+                cetMarksField.style.display = "none";
+                marks12thField.style.display = "none";
+                graduationMarksField.style.display = "none";
+            }
+        }
+    
+        function validateForm(e) {
+            const name = document.getElementById("student_name").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const course = document.getElementById("course").value;
+            const cetMarks = parseInt(document.getElementById("cet_marks").value);
+            const marks12th = parseInt(document.getElementById("marks_12th").value);
+            const gradMarks = parseInt(document.getElementById("graduation_marks").value);
+    
+            // Name: must have at least 3 words (First Middle Last)
+            if (!/^\w+(\s+\w+){2,}$/.test(name)) {
+                alert("Please enter your full name (First, Middle, and Last name).");
+                e.preventDefault();
+                return false;
+            }
+    
+            // Phone: must be exactly 10 digits
+            if (!/^\d{10}$/.test(phone)) {
+                alert("Phone number must be exactly 10 digits.");
+                e.preventDefault();
+                return false;
+            }
+    
+            // Marks Validations
+            if (course === "BCA") {
+                if (isNaN(cetMarks) || cetMarks <= 32) {
+                    alert("CET Marks must be greater than 32");
+                    e.preventDefault();
+                    return false;
+                }
+                if (isNaN(marks12th) || marks12th <= 32) {
+                    alert("12th Marks must be greater than 32");
+                    e.preventDefault();
+                    return false;
+                }
+            } else if (course === "BCS") {
+                if (isNaN(marks12th) || marks12th <= 32) {
+                    alert("12th Marks must be greater than 32");
+                    e.preventDefault();
+                    return false;
+                }
+            } else if (course === "MCS") {
+                if (isNaN(gradMarks) || gradMarks <= 32) {
+                    alert("Graduation Marks must be greater than 32");
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }
+    
+        // Attach validation to form submit
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector("form").addEventListener("submit", validateForm);
+        });
+    </script>
+    
+</body>
+</html>

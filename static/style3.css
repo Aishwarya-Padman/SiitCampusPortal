@@ -1,0 +1,237 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Banner */
+.banner {
+    background-color: #1e1e50;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Placement Content */
+.placement-content {
+    width: 80%;
+    margin: 20px auto;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Headings */
+h2 {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1e1e50;
+    color: white;
+}
+
+/* Student Photo */
+td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Footer */
+.footer {
+    background-color: #d6b8b8;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer div {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer h3 {
+    color: red;
+    font-weight: 600;
+}
+
+.footer p {
+    color: black;
+    margin: 5px 0;
+    font-weight: 400;
+}
+
+.footer .contact p {
+    font-weight: 400;
+}
+
+.copyright {
+    text-align: center;
+    padding: 10px;
+    background: #ddd;
+    font-weight: 500;
+}
+
+.contact-banner {
+    background-color: #1e1e50;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Contact Section */
+.contact-content {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Institution Name */
+.institute-name {
+    color: red;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* College Name */
+.college-name {
+    color: orange;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Address & Contact Details */
+.address, .contact-details {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Email Styling */
+.email a {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email a:hover {
+    text-decoration: underline;
+}
+
+.elementor-widget-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.elementor-widget-container iframe {
+    display: block;
+    margin: auto;
+    width: 80vw;
+    max-width: 1000px;
+    height: 600px;
+}
+
+/* Payment Section */
+.payment-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.payment-option {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    transition: 0.3s;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out;
+}
+
+.payment-option:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.payment-img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.payment-option img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.payment-option a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.payment-option a:hover {
+    text-decoration: underline;
+}
+
+/* Centering Message Box */
+.center-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.message {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}

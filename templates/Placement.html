@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="Placement-banner">
+        <h1>Placement Records</h1>
+    </div><br>
+
+    <label for="companyFilter">Filter by Company:</label>
+    <select id="companyFilter" onchange="filterTable()">
+        <option value="all">All Companies</option>
+        <option value="Sterling Systems Pvt. Ltd, Pune">Sterling Systems Pvt. Ltd, Pune</option>
+        <option value="White Code Technology Solutions, Pune">White Code Technology Solutions, Pune</option>
+        <option value="Aptara Technologies Private Limited">Aptara Technologies Private Limited</option>
+        <option value="Concentrix Daksh Services India Pvt. Ltd, Pune">Concentrix Daksh Services India Pvt. Ltd, Pune</option>
+        <option value="Latent Alpha OBS LLP Venture, Pune">Latent Alpha OBS LLP Venture, Pune</option>
+        <option value="Wipro Limited, Pune">Wipro Limited, Pune</option>
+        <option value="QualSquad Infotech Pvt. Ltd, Pune">QualSquad Infotech Pvt. Ltd, Pune</option>
+    </select>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Student Name</th>
+                <th>Company Name</th>
+                <th>Post</th>
+                <th>Placement Year</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable">
+            <tr data-company="Sterling Systems Pvt. Ltd, Pune">
+                <td>1</td>
+                <td>Abhishek Shegar</td>
+                <td>Sterling Systems Pvt. Ltd, Pune</td>
+                <td>Web Developer</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="Sterling Systems Pvt. Ltd, Pune">
+                <td>2</td>
+                <td>Akash Jadhav</td>
+                <td>Sterling Systems Pvt. Ltd, Pune</td>
+                <td>Web Developer</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="White Code Technology Solutions, Pune">
+                <td>3</td>
+                <td>Arti Palave</td>
+                <td>White Code Technology Solutions, Pune</td>
+                <td>Software Developer</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="Aptara Technologies Private Limited">
+                <td>4</td>
+                <td>Chagan Kumawat</td>
+                <td>Aptara Technologies Private Limited</td>
+                <td>Web Developer</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="Concentrix Daksh Services India Pvt. Ltd, Pune">
+                <td>5</td>
+                <td>Gauri Kadam</td>
+                <td>Concentrix Daksh Services India Pvt. Ltd, Pune</td>
+                <td>Software Developer</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="Latent Alpha OBS LLP Venture, Pune">
+                <td>6</td>
+                <td>Gorakhnath Sawant</td>
+                <td>Latent Alpha OBS LLP Venture, Pune</td>
+                <td>Front-End Developer</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="Wipro Limited, Pune">
+                <td>7</td>
+                <td>Dnyaneshwari Mahadik</td>
+                <td>Wipro Limited, Pune</td>
+                <td>Associate</td>
+                <td>2010</td>
+            </tr>
+            <tr data-company="QualSquad Infotech Pvt. Ltd, Pune">
+                <td>8</td>
+                <td>Kajal Nikam</td>
+                <td>QualSquad Infotech Pvt. Ltd, Pune</td>
+                <td>Data Analyst</td>
+                <td>2010</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

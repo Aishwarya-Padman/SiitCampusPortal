@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Hostel</h1>
+        <hr>
+    </header>
+    
+    <section class="hostel-container">
+        <div class="hostel-box">
+            <img src="{{ url_for('static', filename='images/boys.jpg') }}" alt="BCA Banner">
+            <h2 class="boys">Boys</h2>
+            <ul>
+                <li>250 students capacity</li>
+                <li>Reading hall</li>
+                <li>Hot water</li>
+                <li>Water purifier</li>
+                <li>Messy</li>
+                <li>Wi-Fi facility</li>
+            </ul>
+        </div>
+
+        <div class="hostel-box">
+            <img src="{{ url_for('static', filename='images/girls.jpg') }}" alt="BCA Banner">
+            <h2 class="girls">Girls</h2>
+            <ul>
+                <li>400 students capacity</li>
+                <li>Reading hall</li>
+                <li>Hot water</li>
+                <li>Water purifier</li>
+                <li>Messy</li>
+                <li>Wi-Fi facility</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

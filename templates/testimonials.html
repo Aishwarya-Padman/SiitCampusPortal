@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testimonials</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .testimonial-display {
+            flex: 2;
+        }
+
+        .testimonial-form {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-form h2,
+        .testimonial-display h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        form input,
+        form textarea,
+        form select,
+        form button {
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 10px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        .testimonial {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .testimonial img {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 8px;
+            color: #222;
+        }
+
+        .stars {
+            color: gold;
+            margin-top: 5px;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Left: Testimonials -->
+        <section class="testimonial-display">
+            <h2>What Our Users Say</h2>
+            {% for review in reviews %}
+            <div class="testimonial">
+                <img src="{{ url_for('static', filename='uploads/' ~ review.image_filename) }}" alt="Review Image">
+                <div class="name">{{ review.name }}</div>
+                <div class="stars">
+                    {% for _ in range(review.rating) %}★{% endfor %}
+                </div>
+                <div class="message">{{ review.message }}</div>
+            </div>
+            {% else %}
+                <p style="text-align:center;">No testimonials yet.</p>
+            {% endfor %}
+        </section>
+
+        <!-- Right: Testimonial Form -->
+        <section class="testimonial-form">
+            <h2>Submit Your Review</h2>
+            <form method="POST" action="/submit_testimonial" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <textarea name="message" placeholder="Your Review" required></textarea>
+                <input type="file" name="image" accept="image/*" required>
+                <label for="rating">Rating:</label>
+                <select name="rating" id="rating" required>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="3">★★★☆☆</option>
+                    <option value="2">★★☆☆☆</option>
+                    <option value="1">★☆☆☆☆</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+    </div>
+</body>
+</html>

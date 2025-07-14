@@ -1,0 +1,16 @@
+<html>
+    <head><title></title></head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="section">Select Section:</label>
+    <select name="section" required>
+        <option value="global_campus">Global Campus</option>
+        <option value="facilities">Facilities</option>
+        <option value="testimonials">Testimonials</option>
+    </select>
+
+    <input type="file" name="file" required>
+    <button type="submit">Upload</button>
+</form>
+</body>
+</html>

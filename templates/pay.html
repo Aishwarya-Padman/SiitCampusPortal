@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+    <style>
+        .fee-highlight {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e63946; /* Reddish color, you can change it */
+        }
+    </style>
+</head>
+<body>
+    <div class="center-message">
+        <div class="message">
+            <p class="fee-highlight">Admission Form Fee : ₹300</p><br>
+            <h3>Select a Payment Option:</h3>
+            <div class="payment-options">
+                <a href="upi://pay?pa=YOUR_PHONEPE_UPI_ID&pn=College%20Name&mc=&tid=&tr=&tn=Admission%20Fee&am=&cu=INR" 
+                   target="_blank" class="payment-option">
+                   <img src="{{ url_for('static', filename='images/phonepay.png') }}" alt="PhonePe Logo">
+                   PhonePe
+                </a>
+                <a href="upi://pay?pa=YOUR_GOOGLEPAY_UPI_ID&pn=College%20Name&mc=&tid=&tr=&tn=Admission%20Fee&am=&cu=INR" 
+                   target="_blank" class="payment-option">
+                   <img src="{{ url_for('static', filename='images/googlepay.png') }}" alt="Google Pay Logo">
+                   Google Pay
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

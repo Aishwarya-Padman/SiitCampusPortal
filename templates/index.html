@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>University Website</title>
+
+    <style>
+        /* Font */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide-in Animation */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Button Hover Animation */
+        .hero-btn {
+            transition: transform 0.3s ease-in-out;
+        }
+        .hero-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Section Animation */
+        section {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Images Hover Effect */
+        .campus-col img, .facilities-col img, .testimonials-col img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .campus-col img:hover, .facilities-col img:hover, .testimonials-col img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Heading Animation */
+        .text-box h1 {
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        /* Glow Animation */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #ff7300, 0 0 25px #ff7300; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000; }
+        }
+
+        #course h1, #campus h1, #facilities h1, #testimonials h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #411b9b;
+            text-align: center;
+            animation: glow 1.5s infinite alternate ease-in-out;
+        }
+
+        /* Pulsing Button */
+        .view-btn {
+            padding: 12px 25px;
+            background-color: #411b9b;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            animation: pulse 1.5s infinite;
+            transition: transform 0.3s ease;
+        }
+        .view-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(65, 27, 155, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(65, 27, 155, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(65, 27, 155, 0); }
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            list-style: none;
+            padding: 10px 20px;
+            background: #9b0505;
+        }
+
+        .navbar a {
+            position: relative;
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 5px;
+            left: 50%;
+            background-color: #fff;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 4px 8px rgba(214, 5, 5, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            color: rgb(209, 14, 14);
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .bottom-spacing {
+            margin-bottom: 60px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <nav class="navbar">
+            <li class="dropdown">
+                <a href="#"> About &#x25BE;</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('college') }}">College</a></li>
+                    <li><a href="{{ url_for('about') }}">Principal Sir</a></li>
+                    <li><a href="{{ url_for('viceprincipal') }}">HOD</a></li>
+                </ul>
+            </li>        
+            <a href="#course">Course</a>   
+            <a href="#campus">Campus</a>        
+            <a href="{{ url_for('contact') }}">CONTACT US</a>
+            <a href="{{ url_for('testimonials') }}">Review</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+
+        <div class="text-box">
+            <h1>Shriram Institute Of Information Technology, Paniv</h1>
+            <p>"Our commitment to quality education, discipline, and overall personality development <br>
+                makes us one of the best institutions for higher learning."</p>
+        </div>
+    </section>
+
+    <section id="course" class="course">
+        <h1>Courses We Offer</h1>
+        <p>For More Information Click On BCA/B.Sc(Ecs)/MSC(Computer Scie).</p>
+        <div class="row">
+            <div class="course-col">
+                <h3><a href="{{ url_for('bca') }}">BCA</a></h3>
+                <p>A three-year bachelor’s degree in computer applications, preparing students for careers in programming.</p>
+            </div>
+            <div class="course-col">
+                <h3><a href="{{ url_for('bcs') }}">B.Sc(Ecs)</a></h3>
+                <p>A three-year bachelor’s degree in computer science, focusing on professional skills in business computing.</p>
+            </div>
+            <div class="course-col">
+                <h3><a href="{{ url_for('mcs') }}">MSC(Computer Sci.)</a></h3>
+                <p>A two-year master’s degree in computer science aimed at producing highly skilled computing professionals.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="campus" class="campus">
+        <h1>Our Global Campus</h1>
+        <p>Shriram Shikshan Sanstha provides world-class education in various disciplines.</p>
+        <div class="row">
+            <div class="campus-col">
+                <img src="{{ url_for('static', filename='images/lab.jpg') }}" alt="Lab">
+                <div class="layer"><h3>Lab</h3></div>
+            </div>
+            <div class="campus-col">
+                <img src="{{ url_for('static', filename='images/siit.jpg') }}" alt="SIIT">
+                <div class="layer"><h3>SIIT</h3></div>
+            </div>
+            <div class="campus-col">
+                <img src="{{ url_for('static', filename='images/class.jpg') }}" alt="Class">
+                <div class="layer"><h3>Class</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="facilities" id="facilities">
+        <h1>Our Facilities</h1>
+        <div class="row">
+            <div class="facilities-col">
+                <img src="{{ url_for('static', filename='images/library.jpg') }}" alt="Library">
+                <h3>World-Class Library</h3>
+            </div>
+            <div class="facilities-col">
+                <img src="{{ url_for('static', filename='images/playground.jpg') }}" alt="Playground">
+                <h3>Largest Playground</h3>
+            </div>
+            <div class="facilities-col">
+                <img src="{{ url_for('static', filename='images/mess.jpg') }}" alt="Cafeteria">
+                <h3>Tasty and Healthy Food</h3>
+            </div>
+        </div>
+    </section>
+
+   
+</body>
+</html>

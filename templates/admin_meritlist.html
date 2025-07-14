@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merit List</title>
+
+    <!-- Google Fonts & jQuery -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        select, input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        input {
+            width: 80px;
+            text-align: center;
+        }
+
+        button {
+            background: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Table Styling */
+        .table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: auto;
+            min-width: 350px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+            display: none;
+            border: 2px solid #2c3e50;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 2px solid #2c3e50;
+            text-align: center;
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: rgba(118, 75, 162, 0.2);
+            transition: 0.3s;
+        }
+
+        .no-records {
+            font-size: 18px;
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Merit List</h2>
+
+    <label for="course">Select Course:</label>
+    <select id="course">
+        <option value="" disabled selected>Select Course</option>
+        <option value="BCA">BCA</option>
+        <option value="BCS">BCS</option>
+        <option value="MCS">MCS</option>
+    </select>
+
+    <!-- Number Input Box -->
+    <input type="number" id="number_input" placeholder="Enter number">
+
+    <!-- Submit Button -->
+    <button id="submit_btn">Submit</button>
+    <!-- Delete Button -->
+    <button id="delete_btn">Delete</button>
+
+    <script><button onclick="deleteMeritList()">Delete Merit List</button>
+
+        function deleteMeritList() {
+            localStorage.setItem("meritListDeleted", "true");
+            alert("Merit list deleted!");
+        }
+        </script>
+
+
+    <div id="merit_list"></div> <!-- Table will be displayed here -->
+
+    <script>
+   $(document).ready(function(){
+    let selectedCourse = "";
+    let studentsData = [];
+
+    $("#course").change(function(){
+        selectedCourse = $("#course").val();
+        $('#merit_list').html("");
+
+        $.ajax({
+            url: `/get_meritlist/${selectedCourse}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (!response.data || response.data.length === 0) {
+                    $('#merit_list').html("<p class='no-records'>No records found</p>");
+                    return;
+                }
+
+                studentsData = response.data; // Store fetched data
+
+                let table = `<div class="table-container">
+                                <table id="table_display">
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Name</th>
+                                        <th>Marks</th>
+                                    </tr>`;
+
+                studentsData.forEach((student, index) => {
+                    let marks = student.marks !== null ? student.marks : "N/A";
+                    table += `<tr>
+                                <td>${index + 1}</td> 
+                                <td>${student.student_name}</td>
+                                <td>${marks}</td>
+                              </tr>`;
+                });
+
+                table += `</table></div>`;
+                $('#merit_list').html(table);
+                $('#table_display').fadeIn();
+            },
+            error: function(xhr, status, error) {
+                console.log("Error:", error);
+                $('#merit_list').html("<p class='no-records'>Error fetching data!</p>");
+            }
+        });
+    });
+
+    $("#submit_btn").click(function(){
+    let inputNumber = $("#number_input").val();
+    let selectedCourse = $("#course").val();
+
+    if (!selectedCourse || !inputNumber) {
+        alert("Please select a course and enter a number!");
+        return;
+    }
+
+    $.ajax({
+        url: '/save_meritlist',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ course: selectedCourse, number: inputNumber }),
+        success: function(response) {
+            alert(response.message);
+        },
+        error: function(xhr) {
+            alert("Error: " + xhr.responseJSON.details);
+        }
+    });
+});
+
+
+$("#delete_btn").click(function(){
+    $.ajax({
+        url: '/delete_all_meritlists',  // Flask backend route
+        type: 'POST',
+        success: function(response) {
+            alert(response.message);
+            
+            // **All merit list tables ko frontend se hatao**
+            $("#merit_list_bca").remove();
+            $("#merit_list_bcs").remove();
+            $("#merit_list_mcs").remove();
+        },
+        error: function(xhr) {
+            alert("Error: " + xhr.responseJSON.details);
+        }
+    });
+});
+
+
+
+});
+
+
+
+    </script>
+
+</body>
+</html>

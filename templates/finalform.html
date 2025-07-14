@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            border-radius: 12px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        label {
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            padding: 10px;
+            background-color: #f44336;
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Student Admission Form</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form action="/finalform" method="POST">
+            <label for="student_name">Student Name:</label>
+            <input type="text" name="student_name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" required>
+
+            <label for="address">Address:</label>
+            <textarea name="address" rows="3" required></textarea>
+
+            <label for="course">Course:</label>
+            <select name="course" id="courseSelect" required onchange="toggleMarksFields()">
+                <option value="">-- Select Course --</option>
+                <option value="BCA">BCA</option>
+                <option value="BCS">BCS</option>
+                <option value="MCS">MCS</option>
+            </select>
+
+            <div id="cetMarksField" style="display:none;">
+                <label for="cet_marks">CET Marks (Only for BCA):</label>
+                <input type="number" name="cet_marks">
+            </div>
+
+            <div id="marks12Field" style="display:none;">
+                <label for="marks_12th">12th Marks:</label>
+                <input type="number" name="marks_12th">
+            </div>
+
+            <div id="gradMarksField" style="display:none;">
+                <label for="graduation_marks">Graduation Marks:</label>
+                <input type="number" name="graduation_marks">
+            </div>
+
+            <label for="category">Category:</label>
+            <select name="category" required>
+                <option value="">-- Select Category --</option>
+                <option value="Open">Open</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="NT">NT</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Submit</button>        </form>
+    </div>
+
+    <script>
+        function toggleMarksFields() {
+            const course = document.getElementById("courseSelect").value;
+            document.getElementById("cetMarksField").style.display = (course === "BCA") ? "block" : "none";
+            document.getElementById("marks12Field").style.display = (course === "BCA" || course === "BCS") ? "block" : "none";
+            document.getElementById("gradMarksField").style.display = (course === "MCS") ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
